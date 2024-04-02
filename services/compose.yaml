@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: "nginx"
+    build: ./services/nginx
+    volumes:
+      - static_volume:/home/app/web/files/static
+      - media_volume:/home/app/web/files/media
+      - pdf_volume:/home/app/web/files/pdf
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    networks:
+      - flasknet
+  web:
+    container_name: "flask"
+    build:
+      context: ./services/web
+      dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    volumes:
+      - static_volume:/home/app/web/files/static
+      - media_volume:/home/app/web/files/media
+      - pdf_volume:/home/app/web/files/pdf
+    expose:
+      - 5000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - dbdata
+    networks:
+      flasknet:
+        aliases:
+          - flask-network
+  dbdata:
+    restart: always
+    container_name: "mysql"
+    image: mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    volumes:
+      - mysql_data:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=strolandia
+      - MYSQL_DATABASE=docker_flask
+    ports:
+      - 3307:3306
+    networks:
+      - flasknet
+volumes:
+  mysql_data:
+  static_volume:
+  media_volume:
+  pdf_volume:
+networks:
+  flasknet:
+    name: "netflask"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.28.0.0/16
+        ip_range: 172.28.5.0/24
+        gateway: 172.28.5.254
