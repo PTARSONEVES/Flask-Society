@@ -18,6 +18,34 @@
                     <li><a class="dropdown-item" href="#">Gestão Hoteleira</a></li>
                     <li><a class="dropdown-item" href="#">Gestão Municipal</a></li>
                 </ul>
+                {% if g.user %}
+                {% if (g.user['class_id'] == 1): %}
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Loja
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Cadastro de Compras</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastro de Vendas</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastro de Produtos</a></li>
+                    <li><a class="dropdown-item" href="#">Relatorios</a></li>
+                </ul>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Gerenciamento do Sistema
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Cadastro de Tipo de Usuario</a></li>
+                    <li><a class="dropdown-item" href="#">Alteracao de Perfil de Usuario</a></li>
+                </ul>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Quadra
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Reservas</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastro de Horarios</a></li>
+                    <li><a class="dropdown-item" href="#">Cadastros de itens</a></li>
+                </ul>
+                {% endif %}
+                {% endif %}
             </div>
             {% if g.user %}
             <div class="navbar-nav ms-auto">

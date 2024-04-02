@@ -13,15 +13,15 @@ class BaseConfig(object):
     """Base configuration."""
     #DADOS DA EMPRESA
 
-    EMPRESA_RSOC = 'Squallo Software'
-    EMPRESA_NOMFAN = 'Flask - Layout'
-    EMPRESA_LOGRADOURO = ''
-    EMPRESA_NUMLOGR = ''
-    EMPRESA_COMPLEMENTO = ''
-    EMPRESA_BAIRRO = ''
+    EMPRESA_RSOC = 'S T Araujo'
+    EMPRESA_NOMFAN = 'Society dos Amigos'
+    EMPRESA_LOGRADOURO = 'Rua da Solidariedade'
+    EMPRESA_NUMLOGR = '1'
+    EMPRESA_COMPLEMENTO = 'Sitio Canoas'
+    EMPRESA_BAIRRO = 'Nossa Senhora do Ó'
     EMPRESA_CODMUN = ''
     EMPRESA_CODUF = ''
-    EMPRESA_CODPAIS = ''
+    EMPRESA_CODPAIS = '55'
 
     #CONFIDENCIAL
 #    SECRET_KEY = os.getenv('SECRET_KEY')
@@ -39,14 +39,14 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     #SQLITE - LOCALHOST
     SQLITE_CONNECT = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
-    MYSQL_HOST = 'localhost'
-    #MYSQL_HOST = 'flask_loterias.mysql.dbaas.com.br'
-    MYSQL_USER = 'root'
+    #MYSQL_HOST = 'localhost'
+    MYSQL_HOST = 'flask_society.mysql.dbaas.com.br'
+    MYSQL_USER = 'flask_society'
     #MYSQL_USER = 'flask_loterias'
-    MYSQL_PASS = 'strolandia'
+    MYSQL_PASS = 'Strol!ndi!1'
     #MYSQL_PASS = 'Strol!ndi!1'
-    MYSQL_PORT = 3307
-    MYSQL_DATABASE = 'docker_flask'
+    MYSQL_PORT = 3306
+    MYSQL_DATABASE = 'flask_society'
     # DOCKER
     MYDOCKER_HOST = 'localhost'
     MYDOCKER_USER = 'root'
